@@ -2,7 +2,7 @@ from setuptools import setup
 import pypandoc
 import fontawesome
 
-REL_VERSION = '3'
+REL_VERSION = '5'
 
 setup(name='fontawesome',
       packages=['fontawesome'],
