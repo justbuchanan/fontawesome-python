@@ -21,6 +21,7 @@ def main(uri, config_uri):
 
     out = sys.stdout
 
+    out.write("# -*- coding: utf-8 -*-\n")
     out.write("# This file was generated automatically by fontawesome-python\n")
     out.write(
         "# It contains the icon set from: https://github.com/FortAwesome/Font-Awesome\n")
