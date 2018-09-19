@@ -2,14 +2,14 @@ from setuptools import setup
 import pypandoc
 import fontawesome
 
-REL_VERSION = '5'
+REL_VERSION = '1'
 
 setup(
     name='fontawesome',
     packages=['fontawesome'],
     version=fontawesome.VERSION + '-' + REL_VERSION,
     description='The Font Awesome icon set for python',
-    long_description=pypandoc.convert('readme.md', 'rst'),
+    long_description=pypandoc.convert_file('readme.md', 'rst'),
     license='Code: Apache License, Version 2.0, Icons: SIL OFL 1.1',
     author='Justin Buchanan',
     author_email='justbuchanan@gmail.com',

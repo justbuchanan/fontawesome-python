@@ -14,10 +14,8 @@ import sys
 INDENT = ' ' * 2
 
 
-def main(uri, config_uri):
-    icons_list = yaml.load(requests.get(URI).text)['icons']
-    version = yaml.load(
-        requests.get(CONFIG_URI).text)['fontawesome']['version']
+def main(uri, version, include_aliases):
+    icons_dict = yaml.load(requests.get(uri).text)
 
     out = sys.stdout
 
@@ -34,14 +32,20 @@ def main(uri, config_uri):
     out.write('VERSION = \'%s\'\n' % version)
     out.write('\n')
     out.write('icons = {\n')
-    for icon in icons_list:
-        # dict entry with character code
-        entry = "'%s': '\\u%s'," % (icon['id'], icon['unicode'])
-        indent_to = 50
-        entry += ' ' * (indent_to - len(entry))  # pad
-        # comment with font awesome icon
-        entry += '# %s' % chr(int(icon['unicode'], 16))
-        out.write(INDENT + entry + '\n')
+    for icon_name, icon in icons_dict.items():
+        names = [icon_name]
+        if include_aliases:
+            terms = icon['search']['terms']
+            if terms != None:
+                names += terms
+        for name in names:
+            # dict entry with character code
+            entry = "'%s': '\\u%s'," % (name, icon['unicode'])
+            indent_to = 50
+            entry += ' ' * (indent_to - len(entry))  # pad
+            # comment with font awesome icon
+            entry += '# %s' % chr(int(icon['unicode'], 16))
+            out.write(INDENT + entry + '\n')
 
     out.write('}\n')
 
@@ -58,13 +62,11 @@ if __name__ == '__main__':
         help=
         "Version of font of font awesome to download and use. Should correspond to a git branch name.",
         default='master')
+    parser.add_argument('--include_aliases',help="If enabled, also adds aliases for icons in the output.", default=False)
     args = parser.parse_args()
 
     REVISION = args.revision
     URI = ('https://raw.githubusercontent.com'
-           '/FortAwesome/Font-Awesome/%s/src/icons.yml' % REVISION)
+           '/FortAwesome/Font-Awesome/%s/advanced-options/metadata/icons.yml' % REVISION)
 
-    CONFIG_URI = ('https://raw.githubusercontent.com'
-                  '/FortAwesome/Font-Awesome/%s/_config.yml' % REVISION)
-
-    main(URI, CONFIG_URI)
+    main(URI, args.revision, args.include_aliases)
