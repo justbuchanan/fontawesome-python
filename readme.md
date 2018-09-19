@@ -2,25 +2,22 @@
 
 ## Installation 
 
-~~~{.sh}
+```{.sh}
 pip install fontawesome
-~~~
-
+```
 
 ## Usage 
 
-~~~{.py}
+```{.py}
 import fontawesome as fa
 
 print(fa.icons['thumbs-up'])
 >>> 
-~~~
-
+```
 
 ## Build 
 
-
-~~~{.sh}
+```{.sh}
 # Run the generate script to download font awesome's character mapping
 # and generate a python-formatted version of it.  Save this file as icons.py
 # in the fontawesome subdirectory.  Note that this pulls the latest revision
@@ -31,8 +28,7 @@ print(fa.icons['thumbs-up'])
 python setup.py build
 
 python setup.py install
-~~~
-
+```
 
 ## License
 

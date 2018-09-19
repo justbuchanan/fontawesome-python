@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 This script pulls the font awesome spec from their repo on github,
 then generates a python version of it.
@@ -17,16 +16,20 @@ INDENT = ' ' * 2
 
 def main(uri, config_uri):
     icons_list = yaml.load(requests.get(URI).text)['icons']
-    version = yaml.load(requests.get(CONFIG_URI).text)['fontawesome']['version']
+    version = yaml.load(
+        requests.get(CONFIG_URI).text)['fontawesome']['version']
 
     out = sys.stdout
 
     out.write("# -*- coding: utf-8 -*-\n")
-    out.write("# This file was generated automatically by fontawesome-python\n")
     out.write(
-        "# It contains the icon set from: https://github.com/FortAwesome/Font-Awesome\n")
+        "# This file was generated automatically by fontawesome-python\n")
     out.write(
-        "# The content is licensed under the SIL OFL 1.1: http://scripts.sil.org/OFL\n")
+        "# It contains the icon set from: https://github.com/FortAwesome/Font-Awesome\n"
+    )
+    out.write(
+        "# The content is licensed under the SIL OFL 1.1: http://scripts.sil.org/OFL\n"
+    )
     out.write('\n')
     out.write('VERSION = \'%s\'\n' % version)
     out.write('\n')
@@ -48,10 +51,12 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(
         description=
-        "Generate icons.py, containing a python mapping for font awesome icons")
+        "Generate icons.py, containing a python mapping for font awesome icons"
+    )
     parser.add_argument(
         '--revision',
-        help="Version of font of font awesome to download and use. Should correspond to a git branch name.",
+        help=
+        "Version of font of font awesome to download and use. Should correspond to a git branch name.",
         default='master')
     args = parser.parse_args()
 
