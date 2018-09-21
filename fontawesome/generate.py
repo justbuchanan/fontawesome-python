@@ -62,11 +62,15 @@ if __name__ == '__main__':
         help=
         "Version of font of font awesome to download and use. Should correspond to a git branch name.",
         default='master')
-    parser.add_argument('--include_aliases',help="If enabled, also adds aliases for icons in the output.", default=False)
+    parser.add_argument(
+        '--include_aliases',
+        help="If enabled, also adds aliases for icons in the output.",
+        default=False)
     args = parser.parse_args()
 
     REVISION = args.revision
     URI = ('https://raw.githubusercontent.com'
-           '/FortAwesome/Font-Awesome/%s/advanced-options/metadata/icons.yml' % REVISION)
+           '/FortAwesome/Font-Awesome/%s/advanced-options/metadata/icons.yml' %
+           REVISION)
 
     main(URI, args.revision, args.include_aliases)

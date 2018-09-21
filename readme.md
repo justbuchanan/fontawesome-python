@@ -1,4 +1,4 @@
-# Font Awesome icons for python
+# Font Awesome icons for python [![PyPI version](https://badge.fury.io/py/fontawesome.svg)](https://badge.fury.io/py/fontawesome)
 
 ## Installation 
 
@@ -21,8 +21,7 @@ print(fa.icons['thumbs-up'])
 # Run the generate script to download font awesome's character mapping
 # and generate a python-formatted version of it.  Save this file as icons.py
 # in the fontawesome subdirectory.  Note that this pulls the latest revision
-# on the master branch.  You can easily change this by modifying the
-# generate.py script.
+# on the master branch.  You can easily change this  with the --revision flag.
 ./fontawesome/generate.py > ./fontawesome/icons.py
 
 python setup.py build
