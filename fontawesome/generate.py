@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
     REVISION = args.revision
     URI = ('https://raw.githubusercontent.com'
-           '/FortAwesome/Font-Awesome/%s/advanced-options/metadata/icons.yml' %
+           '/FortAwesome/Font-Awesome/%s/metadata/icons.yml' %
            REVISION)
 
     main(URI, args.revision, args.include_aliases)
