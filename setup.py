@@ -16,6 +16,9 @@ setup(
     maintainer='Justin Buchanan',
     maintainer_email='justbuchanan@gmail.com',
     url='https://github.com/justbuchanan/fontawesome-python',
+    install_requires=[
+        'pyyaml>=5.0,<=6',  
+    ],
     classifiers=[
         'Environment :: Console',
         'Programming Language :: Python :: 2.7',
