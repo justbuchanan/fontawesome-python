@@ -15,7 +15,7 @@ INDENT = ' ' * 2
 
 
 def main(uri, version, include_aliases):
-    icons_dict = yaml.load(requests.get(uri).text)
+    icons_dict = yaml.load(requests.get(uri).text, yaml.FullLoader)
 
     out = sys.stdout
 
